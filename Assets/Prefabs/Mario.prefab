@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 1163561324490880107}
   - component: {fileID: 1163561324490880108}
   - component: {fileID: 1163561324490880111}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
   Force: 13
   Body: {fileID: 1163561324490880107}
   GroundCheck: {fileID: 8875160977315576071}
+  DelayedJumpDisposeTimeout: 0.15
 --- !u!1 &1163561324835591179
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2192006264909503931}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.35, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8110254855072567228}
@@ -450,7 +451,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7898916521735468449}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalPosition: {x: -0.35, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7308127944411570657}
