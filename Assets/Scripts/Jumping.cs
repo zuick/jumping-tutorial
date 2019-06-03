@@ -6,6 +6,7 @@ public class Jumping : MonoBehaviour
 	public Rigidbody2D Body;
 	public GroundCheck GroundCheck;
 	public float DelayedJumpDisposeTimeout = 0.2f;
+	public float JumpCancelFactor = 0.5f;
 
 	private bool isJumpPressed;
 	private bool delayedJump;
@@ -15,7 +16,7 @@ public class Jumping : MonoBehaviour
 		isJumpPressed = Input.GetButton("Jump");
 
 		var isJumpDown = Input.GetButtonDown("Jump");
-		var isJumpUp = Input.GetButtonDown("Jump");
+		var isJumpUp = Input.GetButtonUp("Jump");
 
 		if (isJumpDown && !GroundCheck.Grounded)
 		{
@@ -28,6 +29,9 @@ public class Jumping : MonoBehaviour
 			Body.AddForce(new Vector2(0f, Force), ForceMode2D.Impulse);
 			delayedJump = false;
 		}
+
+		if (isJumpUp)
+			Body.velocity = new Vector2(Body.velocity.x, Body.velocity.y * JumpCancelFactor);
 	}
 
 	private void DisposeDelayedJump()
