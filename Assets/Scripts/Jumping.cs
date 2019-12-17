@@ -1,4 +1,6 @@
 using UnityEngine;
+using Rewired;
+using System.Collections;
 
 public class Jumping : MonoBehaviour
 {
@@ -11,12 +13,28 @@ public class Jumping : MonoBehaviour
 	private bool isJumpPressed;
 	private bool delayedJump;
 
+	private Player playerInput;
+
+	private void Awake()
+	{
+		playerInput = ReInput.players.GetPlayer(0);
+	}
+
+	IEnumerator Start()
+	{
+		yield return new WaitForSeconds(3f);
+		foreach (var aem in playerInput.controllers.maps.ElementMapsWithAction("Jump", true))
+		{
+			Debug.Log($"{aem.actionDescriptiveName}: {aem.elementIdentifierName}, {aem.elementType}");
+		}
+	}
+
 	private void Update()
 	{
-		isJumpPressed = Input.GetButton("Jump");
+		isJumpPressed = playerInput.GetButton("Jump");
 
-		var isJumpDown = Input.GetButtonDown("Jump");
-		var isJumpUp = Input.GetButtonUp("Jump");
+		var isJumpDown = playerInput.GetButtonDown("Jump");
+		var isJumpUp = playerInput.GetButtonUp("Jump");
 
 		if (isJumpDown && !GroundCheck.Grounded)
 		{
